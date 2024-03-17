@@ -1,3 +1,8 @@
+// Function to convert temperature from Kelvin to Fahrenheit
+function kelvinToFahrenheit(kelvinTemp) {
+  return ((kelvinTemp - 273.15) * 9) / 5 + 32;
+}
+
 const form = document.querySelector("form");
 const apiKey = "46ab9f7ad85f55fd2ccc2d8293afa72a";
 
@@ -24,7 +29,7 @@ form.addEventListener("submit", function (event) {
             city: cityName,
             date: new Date().toLocaleDateString(),
             clouds: weatherData.list[0].weather[0].description,
-            temp: weatherData.list[0].main.temp,
+            temp: kelvinToFahrenheit(weatherData.list[0].main.temp), // Convert Kelvin to Fahrenheit
             windSpeed: weatherData.list[0].wind.speed,
             humidity: weatherData.list[0].main.humidity,
           };
@@ -37,7 +42,7 @@ form.addEventListener("submit", function (event) {
                 weatherData.list[i * 4].dt * 1000
               ).toLocaleDateString(),
               clouds: weatherData.list[i * 4].weather[0].description,
-              temp: weatherData.list[i * 4].main.temp,
+              temp: kelvinToFahrenheit(weatherData.list[i * 4].main.temp), // Convert Kelvin to Fahrenheit
               windSpeed: weatherData.list[i * 4].wind.speed,
               humidity: weatherData.list[i * 4].main.humidity,
             };
