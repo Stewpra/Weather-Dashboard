@@ -1,0 +1,8 @@
+* {
+  box-sizing: border-box;
+  border: 1px red solid;
+}
+
+section {
+  height: 100vh;
+}
