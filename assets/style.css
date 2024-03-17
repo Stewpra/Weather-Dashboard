@@ -1,8 +1,40 @@
 * {
   box-sizing: border-box;
-  border: 1px red solid;
+  /* border: 1px red solid; */
+}
+
+header {
+  background: linear-gradient(to right, rgb(80, 143, 168), #160f3b);
+  display: flex;
+  justify-content: center;
+  color: white;
+  border-bottom: 4px solid #160f3b;
 }
 
 section {
   height: 100vh;
+  background-color: rgb(187, 185, 181);
+}
+
+form {
+  display: flex;
+  justify-content: center;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+button {
+  background: linear-gradient(to right, rgb(80, 143, 168), #160f3b);
+}
+
+#searchArea {
+  border-right: #160f3b 4px solid;
+}
+
+h4 {
+  align-self: center;
 }
