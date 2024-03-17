@@ -10,9 +10,26 @@
     />
     <link rel="stylesheet" href="assets/style.css" />
   </head>
-  <body>
-    <main>
-      <section></section>
+  <body class="col-12">
+    <header><h1>Weather Dashboard</h1></header>
+    <main class="row">
+      <section class="col-3">
+        <form>
+          <div class="form-group">
+            <label for="cityInput">City</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cityInput"
+              placeholder="New York"
+            />
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+          </div>
+        </form>
+        <div><!-- previous search area ---></div>
+      </section>
+
+      <section class="col-9"><!-- weather dashboard display area --></section>
     </main>
     <script src="./assets/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
