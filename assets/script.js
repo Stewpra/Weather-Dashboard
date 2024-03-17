@@ -29,8 +29,6 @@ form.addEventListener("submit", function (event) {
             humidity: weatherData.list[0].main.humidity,
           };
 
-          console.log(weatherData);
-
           const forecast = [];
           for (let i = 1; i <= 5; i++) {
             const forecastData = {
@@ -49,7 +47,11 @@ form.addEventListener("submit", function (event) {
           const weatherDashboardData = [todayWeather, ...forecast];
           console.log("Weather Dashboard Data:", weatherDashboardData);
 
-          // You can now use weatherDashboardData to display weather information on your dashboard
+          // Store the weatherDashboardData array in local storage
+          localStorage.setItem(
+            "weatherDashboardData",
+            JSON.stringify(weatherDashboardData)
+          );
         })
         .catch((error) => {
           console.error("Error fetching weather data:", error);
