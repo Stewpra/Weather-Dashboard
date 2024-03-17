@@ -1,39 +1,55 @@
-// Get the form element
 const form = document.querySelector("form");
 const apiKey = "46ab9f7ad85f55fd2ccc2d8293afa72a";
 
-// Add an event listener for form submission
 form.addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent the form from submitting
+  event.preventDefault();
 
-  // Get the input value
   const cityInput = document.getElementById("cityInput").value;
-  let cityName = cityInput; // Store the input value in a variable for later use
+  let cityName = cityInput;
 
-  console.log("City Name:", cityName);
-
-  // Make a request to the Geocoding API
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`
   )
     .then((response) => response.json())
     .then((data) => {
-      // Extract latitude and longitude from the API response
       const latitude = data.coord.lat;
       const longitude = data.coord.lon;
 
-      console.log("Latitude:", latitude);
-      console.log("Longitude:", longitude);
-
-      // Make a request to the Weather API using the latitude and longitude
       fetch(
         `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}`
       )
         .then((response) => response.json())
         .then((weatherData) => {
-          // Handle the weather data returned from the API
-          console.log("Weather Data:", weatherData);
-          // You can now use the weatherData to display weather information on your dashboard
+          const todayWeather = {
+            city: cityName,
+            date: new Date().toLocaleDateString(),
+            clouds: weatherData.list[0].weather[0].description,
+            temp: weatherData.list[0].main.temp,
+            windSpeed: weatherData.list[0].wind.speed,
+            humidity: weatherData.list[0].main.humidity,
+          };
+
+          console.log(weatherData);
+
+          const forecast = [];
+          for (let i = 1; i <= 5; i++) {
+            const forecastData = {
+              city: cityName,
+              date: new Date(
+                weatherData.list[i * 4].dt * 1000
+              ).toLocaleDateString(),
+              clouds: weatherData.list[i * 4].weather[0].description,
+              temp: weatherData.list[i * 4].main.temp,
+              windSpeed: weatherData.list[i * 4].wind.speed,
+              humidity: weatherData.list[i * 4].main.humidity,
+            };
+            forecast.push(forecastData);
+          }
+
+          const weatherDashboardData = [todayWeather, ...forecast];
+          console.log("Weather Dashboard Data:", weatherDashboardData);
+
+          // You can now use weatherDashboardData to display weather information on your dashboard
         })
         .catch((error) => {
           console.error("Error fetching weather data:", error);
