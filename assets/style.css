@@ -1,8 +1,9 @@
+/* Global Styles */
 * {
   box-sizing: border-box;
-  /* border: 1px red solid; */
 }
 
+/* Header Styles */
 header {
   background: linear-gradient(to right, rgb(80, 143, 168), #160f3b);
   display: flex;
@@ -11,34 +12,42 @@ header {
   border-bottom: 4px solid #160f3b;
 }
 
+/* Body Styles */
 body {
   height: 100vh;
   background-color: rgb(187, 185, 181);
 }
 
+/* Form Styles */
 form {
   display: flex;
   justify-content: center;
 }
 
+/* Container Styles */
 div {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+/* Button Styles */
 button {
   background: linear-gradient(to right, rgb(80, 143, 168), #160f3b);
 }
 
+/* Search Area Styles */
 #searchArea {
   border-right: #160f3b 4px solid;
+  border-bottom: #160f3b 4px solid;
 }
 
+/* Heading Styles */
 h4 {
   align-self: center;
 }
 
+/* Weather Display Styles */
 #todayWeather {
   display: flex;
   flex-direction: row;
@@ -50,6 +59,7 @@ h4 {
   flex-direction: row;
 }
 
+/* Weather Card Styles */
 .weather-card {
   border: #160f3b 4px solid;
   margin: 5px;
@@ -64,6 +74,18 @@ h4 {
   width: 100%;
 }
 
-#searchArea {
-  height: 100vh;
+/* City Button Styles */
+.city-button {
+  width: 200px;
+  height: 40px;
+  border-radius: 20px;
+  color: white;
+  margin: 10px;
+}
+
+/* Search History Styles */
+#searchHistory {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
