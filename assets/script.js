@@ -121,3 +121,11 @@ function processWeatherData(cityName, weatherData) {
 function storeWeatherData(weatherData) {
   localStorage.setItem("weatherDashboardData", JSON.stringify(weatherData));
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const storedWeatherData = localStorage.getItem("weatherDashboardData");
+  if (storedWeatherData) {
+    const weatherData = JSON.parse(storedWeatherData);
+    displayWeatherCards(weatherData);
+  }
+});
