@@ -11,7 +11,7 @@ header {
   border-bottom: 4px solid #160f3b;
 }
 
-section {
+body {
   height: 100vh;
   background-color: rgb(187, 185, 181);
 }
@@ -37,4 +37,32 @@ button {
 
 h4 {
   align-self: center;
+}
+
+#todayWeather {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+#forecastWeather {
+  display: flex;
+  flex-direction: row;
+}
+
+.weather-card {
+  border: #160f3b 4px solid;
+  margin: 5px;
+  border-radius: 20px;
+  background-color: rgb(80, 143, 168);
+  color: white;
+  padding: 4px;
+}
+
+.first-card {
+  width: 100%;
+}
+
+#searchArea {
+  height: 100vh;
 }

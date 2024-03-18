@@ -13,7 +13,7 @@
   <body class="col-12">
     <header><h1>Weather Dashboard</h1></header>
     <main class="row">
-      <section id="searchArea" class="col-12 col-md-4">
+      <section id="searchArea" class="col-12 col-md-3">
         <form>
           <div class="form-group p-2">
             <h3>Search for a City:</h3>
@@ -31,10 +31,10 @@
         <div><h4>Previous Searches</h4></div>
       </section>
 
-      <section id="contentArea" class="col-12 col-md-8">
+      <section id="contentArea" class="col-12 col-md-9">
         <!-- weather dashboard display area -->
-        <div class="today"></div>
-        <div class="fiveDay"></div>
+        <div id="todayWeather"></div>
+        <div id="forecastWeather"></div>
       </section>
     </main>
     <script src="./assets/script.js"></script>
