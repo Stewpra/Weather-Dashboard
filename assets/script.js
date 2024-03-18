@@ -1,12 +1,12 @@
+// DEPENDENCIES
 const form = document.querySelector("form");
 const apiKey = "46ab9f7ad85f55fd2ccc2d8293afa72a";
 
+// FUNCTIONS
 function createWeatherCard(weather, isFirstCard) {
-  // Convert temperature from Kelvin to Fahrenheit
   const tempKelvin = weather.temp;
   const tempFahrenheit = ((tempKelvin - 273.15) * 9) / 5 + 32;
 
-  // Map different cloud conditions to emojis
   const cloudEmojis = {
     "clear sky": "☀️",
     "few clouds": "🌤️",
@@ -18,20 +18,22 @@ function createWeatherCard(weather, isFirstCard) {
     "light rain": "🌧️",
     "moderate rain": "🌧️",
     "heavy intensity rain": "🌧️",
-    // Add more cloud conditions and corresponding emojis as needed
   };
 
-  // Get the emoji for the cloud condition
   const cloudEmoji = cloudEmojis[weather.clouds.toLowerCase()] || "☁️";
 
+  const cityName = isFirstCard
+    ? weather.city.charAt(0).toUpperCase() + weather.city.slice(1)
+    : "";
+
   let cardContent = `
-    <div class="weather-card ${isFirstCard ? "first-card" : ""}">
-      <h4>${isFirstCard ? weather.city : ""}</h4>
-      <p>Date: ${weather.date} ${cloudEmoji}</p>
-      <p>Temp: ${tempFahrenheit.toFixed(2)}°F</p>
-      <p>Wind Speed: ${weather.windSpeed} mph</p>
-      <p>Humidity: ${weather.humidity}%</p>
-    </div>
+      <div class="weather-card ${isFirstCard ? "first-card" : ""}">
+          <h4>${cityName}</h4>
+          <p>Date: ${weather.date} ${cloudEmoji}</p>
+          <p>Temp: ${tempFahrenheit.toFixed(2)}°F</p>
+          <p>Wind Speed: ${weather.windSpeed} mph</p>
+          <p>Humidity: ${weather.humidity}%</p>
+      </div>
   `;
 
   return cardContent;
@@ -54,6 +56,7 @@ function handleFormSubmit(event) {
       const weatherDashboardData = processWeatherData(cityName, weatherData);
       displayWeatherCards(weatherDashboardData);
       storeWeatherData(weatherDashboardData);
+      createWeatherButton(weatherDashboardData);
     })
     .catch((error) => {
       console.error("Error:", error);
@@ -129,3 +132,16 @@ document.addEventListener("DOMContentLoaded", () => {
     displayWeatherCards(weatherData);
   }
 });
+
+function createWeatherButton(weatherData) {
+  var button = document.createElement("button");
+  button.textContent = weatherData[0].city;
+  button.classList.add("city-button");
+
+  button.addEventListener("click", function () {
+    displayWeatherCards(weatherData);
+  });
+
+  var searchHistoryArea = document.getElementById("searchHistory");
+  searchHistoryArea.appendChild(button);
+}
